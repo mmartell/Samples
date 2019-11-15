@@ -32,3 +32,7 @@ steps:
   displayName: 'Setup Behave'
 - script: behave --version
   displayName: 'Behave Version'
+- script: dotnet tool install --global --version 0.5 Steeltoe.Cli
+  displayName: 'Install Steeltoe Tooling'
+- script: st --version
+  displayName: 'Steeltoe Tooling Version'
