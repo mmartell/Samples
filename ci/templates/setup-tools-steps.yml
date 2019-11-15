@@ -14,6 +14,10 @@ steps:
     version: ${{parameters.dotnet2Version}}
 - script: dotnet --version
   displayName: 'DotNet Version'
+- script: dotnet tool install --global --version 0.5.0 Steeltoe.Cli --add-source https://www.myget.org/F/steeltoedev/api/v3/index.json
+  displayName: 'Install Tooling'
+- script: st --version
+  displayName: 'Tooling Version'
 - task: UsePythonVersion@0
   displayName: 'Setup Python'
   inputs:
@@ -28,10 +32,6 @@ steps:
   displayName: 'Ruby Version'
 - script: java -version
   displayName: 'Java Version'
-- script: dotnet tool install --global --version 0.5 Steeltoe.Cli --add-source https://www.myget.org/F/steeltoedev/api/v3/index.json
-  displayName: 'Install Steeltoe Tooling'
-- script: st --version
-  displayName: 'Steeltoe Tooling Version'
 - script: python -m pip install -r pyenv.pkgs
   displayName: 'Setup Behave'
 - script: behave --version
