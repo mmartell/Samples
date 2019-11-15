@@ -8,7 +8,6 @@ import threading
 
 class Command(object):
 
-    PROJECT_COMMANDS = ['dotnet', 'cf']
     BATCH_COMMANDS = ['gradlew', 'mvn', 'uaac']
     COUNT = 0
     COUNT_LOCK = threading.Lock()
@@ -92,11 +91,11 @@ class CommandException(Exception):
 
 def infer_cwd(context, args):
     '''
-    all dotnet commands are run in project dir
+    all dotnet and st commands are run in project dir
     cf commands are run in project dir if they refer to a project file, else run in sandbox
     all other commands are run in sandbox
     '''
-    if args[0] == 'dotnet':
+    if args[0] in ('dotnet', 'st'):
         return context.project_dir
     if args[0] == 'cf':
         for flag in ['-c', '-f']:
@@ -112,11 +111,12 @@ def resolve_args(context, args, cwd):
     resolve app names, hostnames, etc
     '''
     arg_resolvers = {
-            'cf': resolve_cf_args,
-            'gradle': resolve_gradle_args,
-            'gradlew': resolve_gradle_args,
-            'uaac': resolve_uaac_args,
-            }
+        'cf': resolve_cf_args,
+        'gradle': resolve_gradle_args,
+        'gradlew': resolve_gradle_args,
+        'st': resolve_st_args,
+        'uaac': resolve_uaac_args,
+    }
     cmd = os.path.split(args[0])[-1]
     try:
         arg_resolvers[cmd](context, args, cwd)
@@ -152,6 +152,15 @@ def resolve_gradle_args(context, args, cwd):
         if args[i].startswith('-Dapp-domain='):
             domain = args[i].split('=', 1)[1]
             args[i] = '-Dapp-domain={}'.format(resolve.domainname(context, domain))
+
+def resolve_st_args(context, args, cwd):
+    try:
+        add_idx = args.index('add-app')
+        name_idx = add_idx + 1
+        args[name_idx] = resolve.hostname(context, args[name_idx])
+    except ValueError:
+        pass
+    args.insert(1, '-v')
 
 def resolve_uaac_args(context, args, cwd):
     if args[1] == 'target':

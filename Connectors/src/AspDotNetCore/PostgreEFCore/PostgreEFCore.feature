@@ -7,13 +7,12 @@ Feature: PostgreEFCore Connector
     @netcoreapp3.0
     @win10-x64
     Scenario: PostgreEFCore Connector for .Net Core 3.0 (win10-x64)
-        Given you have at least .NET Core SDK 3.0.100 installed
-        And you have CloudFoundry service postgresql-10-odb installed
-        When you run: cf create-service postgresql-10-odb standalone myPostgres -c '{"db_name":"postgresample", "db_username":"steeltoe", "owner_name":"Steeltoe Demo", "owner_email":"demo@steeltoe.io"}'
-        And you wait until CloudFoundry service myPostgres is created
-        And you run: dotnet restore
-        And you run: dotnet publish -f netcoreapp3.0 -r win10-x64
-        And you run in the background: cf push -f manifest-windows.yml -p bin/Debug/netcoreapp3.0/win10-x64/publish
+        When you run: st init -F
+        And you run: st add-app postgresefcore-connector -f netcoreapp3.0 -r win10-x64
+        And you run: st add-service postgresql myPostgres
+        And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
+        And you run: st target cloud-foundry
+        And you run: st deploy
         And you wait until CloudFoundry app postgresefcore-connector is started
         When you get https://postgresefcore-connector.x.y.z/Home/PostgresData
         Then you should see "1: Test Data 1 - EF Core TestContext"
@@ -22,13 +21,12 @@ Feature: PostgreEFCore Connector
     @netcoreapp3.0
     @ubuntu.16.04-x64
     Scenario: PostgreEFCore Connector for .Net Core 3.0 (ubuntu.16.04-x64)
-        Given you have at least .NET Core SDK 3.0.100 installed
-        And you have CloudFoundry service postgresql-10-odb installed
-        When you run: cf create-service postgresql-10-odb standalone myPostgres -c '{"db_name":"postgresample", "db_username":"steeltoe", "owner_name":"Steeltoe Demo", "owner_email":"demo@steeltoe.io"}'
-        And you wait until CloudFoundry service myPostgres is created
-        And you run: dotnet restore
-        And you run: dotnet publish -f netcoreapp3.0 -r ubuntu.16.04-x64
-        And you run in the background: cf push -f manifest.yml -p bin/Debug/netcoreapp3.0/ubuntu.16.04-x64/publish
+        When you run: st init -F
+        And you run: st add-app postgresefcore-connector -f netcoreapp3.0 -r ubuntu.16.04-x64
+        And you run: st add-service postgresql myPostgres
+        And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
+        And you run: st target cloud-foundry
+        And you run: st deploy
         And you wait until CloudFoundry app postgresefcore-connector is started
         When you get https://postgresefcore-connector.x.y.z/Home/PostgresData
         Then you should see "1: Test Data 1 - EF Core TestContext"
@@ -37,13 +35,12 @@ Feature: PostgreEFCore Connector
     @netcoreapp2.1
     @win10-x64
     Scenario: PostgreEFCore Connector for .Net Core 2.1 (win10-x64)
-        Given you have at least .NET Core SDK 2.1.300 installed
-        And you have CloudFoundry service postgresql-10-odb installed
-        When you run: cf create-service postgresql-10-odb standalone myPostgres -c '{"db_name":"postgresample", "db_username":"steeltoe", "owner_name":"Steeltoe Demo", "owner_email":"demo@steeltoe.io"}'
-        And you wait until CloudFoundry service myPostgres is created
-        And you run: dotnet restore
-        And you run: dotnet publish -f netcoreapp2.1 -r win10-x64
-        And you run in the background: cf push -f manifest-windows.yml -p bin/Debug/netcoreapp2.1/win10-x64/publish
+        When you run: st init -F
+        And you run: st add-app postgresefcore-connector -f netcoreapp2.1 -r win10-x64
+        And you run: st add-service postgresql myPostgres
+        And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
+        And you run: st target cloud-foundry
+        And you run: st deploy
         And you wait until CloudFoundry app postgresefcore-connector is started
         When you get https://postgresefcore-connector.x.y.z/Home/PostgresData
         Then you should see "1: Test Data 1 - EF Core TestContext"
@@ -52,13 +49,12 @@ Feature: PostgreEFCore Connector
     @netcoreapp2.1
     @ubuntu.16.04-x64
     Scenario: PostgreEFCore Connector for .Net Core 2.1 (ubuntu.16.04-x64)
-        Given you have at least .NET Core SDK 2.1.300 installed
-        And you have CloudFoundry service postgresql-10-odb installed
-        When you run: cf create-service postgresql-10-odb standalone myPostgres -c '{"db_name":"postgresample", "db_username":"steeltoe", "owner_name":"Steeltoe Demo", "owner_email":"demo@steeltoe.io"}'
-        And you wait until CloudFoundry service myPostgres is created
-        And you run: dotnet restore
-        And you run: dotnet publish -f netcoreapp2.1 -r ubuntu.16.04-x64
-        And you run in the background: cf push -f manifest.yml -p bin/Debug/netcoreapp2.1/ubuntu.16.04-x64/publish
+        When you run: st init -F
+        And you run: st add-app postgresefcore-connector -f netcoreapp2.1 -r ubuntu.16.04-x64
+        And you run: st add-service postgresql myPostgres
+        And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
+        And you run: st target cloud-foundry
+        And you run: st deploy
         And you wait until CloudFoundry app postgresefcore-connector is started
         When you get https://postgresefcore-connector.x.y.z/Home/PostgresData
         Then you should see "1: Test Data 1 - EF Core TestContext"

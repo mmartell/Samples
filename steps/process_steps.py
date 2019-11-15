@@ -1,6 +1,7 @@
 from behave import *
 from command import Command, CommandException
 import re
+import resolve
 import socket
 import time
 
@@ -60,6 +61,7 @@ def step_impl(context, service):
 
 @when(u'you wait until CloudFoundry app {app} is started')
 def step_impl(context, app):
+    app = resolve.hostname(context, app)
     def app_started():
         cmd = Command(context, 'cf apps', logf=context.log.debug)
         cmd.run()

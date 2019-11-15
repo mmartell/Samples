@@ -6,10 +6,10 @@ Feature: CloudFoundry Configuration
     @netcoreapp3.0
     @win10-x64
     Scenario: CloudFoundry Configuration for .Net Core 3.0 (win10-x64)
-        Given you have at least .Net Core SDK 3.0.100 installed
-        When you run: dotnet restore
-        And you run: dotnet publish -f netcoreapp3.0 -r win10-x64
-        And you run in the background: cf push -f manifest-windows.yml -p bin/Debug/netcoreapp3.0/win10-x64/publish
+        When you run: st init -F
+        And you run: st add-app cloud -f netcoreapp3.0 -r win10-x64
+        And you run: st target cloud-foundry
+        And you run: st deploy
         And you wait until CloudFoundry app cloud is started
         When you get https://cloud.x.y.z/Home/CloudFoundry
         Then you should see "vcap:application:application_name = cloud"
@@ -17,10 +17,10 @@ Feature: CloudFoundry Configuration
     @netcoreapp3.0
     @ubuntu.16.04-x64
     Scenario: CloudFoundry Configuration for .Net Core 3.0 (ubuntu.16.04-x64)
-        Given you have at least .Net Core SDK 3.0.100 installed
-        When you run: dotnet restore
-        And you run: dotnet publish -f netcoreapp3.0 -r ubuntu.16.04-x64
-        And you run in the background: cf push -f manifest.yml -p bin/Debug/netcoreapp3.0/ubuntu.16.04-x64/publish
+        When you run: st init -F
+        And you run: st add-app cloud -f netcoreapp3.0 -r ubuntu.16.04-x64
+        And you run: st target cloud-foundry
+        And you run: st deploy
         And you wait until CloudFoundry app cloud is started
         When you get https://cloud.x.y.z/Home/CloudFoundry
         Then you should see "vcap:application:application_name = cloud"
@@ -28,10 +28,10 @@ Feature: CloudFoundry Configuration
     @netcoreapp2.1
     @win10-x64
     Scenario: CloudFoundry Configuration for .Net Core 2.1 (win10-x64)
-        Given you have at least .Net Core SDK 2.1.300 installed
-        When you run: dotnet restore
-        And you run: dotnet publish -f netcoreapp2.1 -r win10-x64
-        And you run in the background: cf push -f manifest-windows.yml -p bin/Debug/netcoreapp2.1/win10-x64/publish
+        When you run: st init -F
+        And you run: st add-app cloud -f netcoreapp2.1 -r win10-x64
+        And you run: st target cloud-foundry
+        And you run: st deploy
         And you wait until CloudFoundry app cloud is started
         When you get https://cloud.x.y.z/Home/CloudFoundry
         Then you should see "vcap:application:application_name = cloud"
@@ -39,10 +39,10 @@ Feature: CloudFoundry Configuration
     @netcoreapp2.1
     @ubuntu.16.04-x64
     Scenario: CloudFoundry Configuration for .Net Core 2.1 (ubuntu.16.04-x64)
-        Given you have at least .Net Core SDK 2.1.300 installed
-        When you run: dotnet restore
-        And you run: dotnet publish -f netcoreapp2.1 -r ubuntu.16.04-x64
-        And you run in the background: cf push -f manifest.yml -p bin/Debug/netcoreapp2.1/ubuntu.16.04-x64/publish
+        When you run: st init -F
+        And you run: st add-app cloud -f netcoreapp2.1 -r ubuntu.16.04-x64
+        And you run: st target cloud-foundry
+        And you run: st deploy
         And you wait until CloudFoundry app cloud is started
         When you get https://cloud.x.y.z/Home/CloudFoundry
         Then you should see "vcap:application:application_name = cloud"
@@ -50,10 +50,10 @@ Feature: CloudFoundry Configuration
     @net461
     @win10-x64
     Scenario: CloudFoundry Configuration for .Net Framework 4.6.1 (win10-x64)
-        Given you have at least .Net Core SDK 2.1.300 installed
-        When you run: dotnet restore
-        And you run: dotnet publish -f net461 -r win10-x64
-        And you run in the background: cf push -f manifest-windows.yml -p bin/Debug/net461/win10-x64/publish
+        When you run: st init -F
+        And you run: st add-app cloud -f net461 -r win10-x64
+        And you run: st target cloud-foundry
+        And you run: st deploy
         And you wait until CloudFoundry app cloud is started
         When you get https://cloud.x.y.z/Home/CloudFoundry
         Then you should see "vcap:application:application_name = cloud"
