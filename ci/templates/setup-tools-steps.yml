@@ -28,11 +28,11 @@ steps:
   displayName: 'Ruby Version'
 - script: java -version
   displayName: 'Java Version'
+- script: dotnet tool install --global --version 0.5 Steeltoe.Cli --add-source https://www.myget.org/F/steeltoedev/api/v3/index.json
+  displayName: 'Install Steeltoe Tooling'
+- script: st --version
+  displayName: 'Steeltoe Tooling Version'
 - script: python -m pip install -r pyenv.pkgs
   displayName: 'Setup Behave'
 - script: behave --version
   displayName: 'Behave Version'
-- script: dotnet tool install --global --version 0.5 Steeltoe.Cli
-  displayName: 'Install Steeltoe Tooling'
-- script: st --version
-  displayName: 'Steeltoe Tooling Version'
