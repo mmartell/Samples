@@ -14,7 +14,7 @@ steps:
     version: ${{parameters.dotnet2Version}}
 - script: dotnet --version
   displayName: 'DotNet Version'
-- script: dotnet tool install --global --version 0.5.0 Steeltoe.Cli --add-source https://www.myget.org/F/steeltoedev/api/v3/index.json
+- script: dotnet tool install --global --version 0.5.0-1419 Steeltoe.Cli --add-source https://www.myget.org/F/steeltoedev/api/v3/index.json
   displayName: 'Install Tooling'
 - script: st --version
   displayName: 'Tooling Version'
