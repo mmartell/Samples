@@ -12,7 +12,6 @@ Feature: Redis Connector
         And you run: st add-service redis myRedisService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app redis-connector is started
         When you get https://redis-connector.x.y.z/Home/CacheData
         Then you should see "Key1=Key1Value"
         And you should see "Key2=Key2Value"
@@ -25,7 +24,6 @@ Feature: Redis Connector
         And you run: st add-service redis myRedisService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app redis-connector is started
         When you get https://redis-connector.x.y.z/Home/CacheData
         Then you should see "Key1=Key1Value"
         And you should see "Key2=Key2Value"
@@ -38,7 +36,6 @@ Feature: Redis Connector
         And you run: st add-service redis myRedisService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app redis-connector is started
         When you get https://redis-connector.x.y.z/Home/CacheData
         Then you should see "Key1=Key1Value"
         And you should see "Key2=Key2Value"
@@ -51,7 +48,6 @@ Feature: Redis Connector
         And you run: st add-service redis myRedisService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app redis-connector is started
         When you get https://redis-connector.x.y.z/Home/CacheData
         Then you should see "Key1=Key1Value"
         And you should see "Key2=Key2Value"
@@ -64,7 +60,6 @@ Feature: Redis Connector
         And you run: st add-service redis myRedisService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app redis-connector is started
         When you get https://redis-connector.x.y.z/Home/CacheData
         Then you should see "Key1=Key1Value"
         And you should see "Key2=Key2Value"

@@ -13,7 +13,6 @@ Feature: PostgreEFCore Connector
         And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app postgresefcore-connector is started
         When you get https://postgresefcore-connector.x.y.z/Home/PostgresData
         Then you should see "1: Test Data 1 - EF Core TestContext"
         And you should see "2: Test Data 2 - EF Core TestContext"
@@ -27,7 +26,6 @@ Feature: PostgreEFCore Connector
         And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app postgresefcore-connector is started
         When you get https://postgresefcore-connector.x.y.z/Home/PostgresData
         Then you should see "1: Test Data 1 - EF Core TestContext"
         And you should see "2: Test Data 2 - EF Core TestContext"
@@ -41,7 +39,6 @@ Feature: PostgreEFCore Connector
         And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app postgresefcore-connector is started
         When you get https://postgresefcore-connector.x.y.z/Home/PostgresData
         Then you should see "1: Test Data 1 - EF Core TestContext"
         And you should see "2: Test Data 2 - EF Core TestContext"
@@ -55,7 +52,6 @@ Feature: PostgreEFCore Connector
         And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app postgresefcore-connector is started
         When you get https://postgresefcore-connector.x.y.z/Home/PostgresData
         Then you should see "1: Test Data 1 - EF Core TestContext"
         And you should see "2: Test Data 2 - EF Core TestContext"

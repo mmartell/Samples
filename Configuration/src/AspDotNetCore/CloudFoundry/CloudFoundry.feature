@@ -10,7 +10,6 @@ Feature: CloudFoundry Configuration
         And you run: st add-app cloud -f netcoreapp3.0 -r win10-x64
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app cloud is started
         When you get https://cloud.x.y.z/Home/CloudFoundry
         Then you should see "vcap:application:application_name = cloud"
 
@@ -21,7 +20,6 @@ Feature: CloudFoundry Configuration
         And you run: st add-app cloud -f netcoreapp3.0 -r ubuntu.16.04-x64
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app cloud is started
         When you get https://cloud.x.y.z/Home/CloudFoundry
         Then you should see "vcap:application:application_name = cloud"
 
@@ -32,7 +30,6 @@ Feature: CloudFoundry Configuration
         And you run: st add-app cloud -f netcoreapp2.1 -r win10-x64
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app cloud is started
         When you get https://cloud.x.y.z/Home/CloudFoundry
         Then you should see "vcap:application:application_name = cloud"
 
@@ -43,7 +40,6 @@ Feature: CloudFoundry Configuration
         And you run: st add-app cloud -f netcoreapp2.1 -r ubuntu.16.04-x64
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app cloud is started
         When you get https://cloud.x.y.z/Home/CloudFoundry
         Then you should see "vcap:application:application_name = cloud"
 
@@ -54,6 +50,5 @@ Feature: CloudFoundry Configuration
         And you run: st add-app cloud -f net461 -r win10-x64
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app cloud is started
         When you get https://cloud.x.y.z/Home/CloudFoundry
         Then you should see "vcap:application:application_name = cloud"

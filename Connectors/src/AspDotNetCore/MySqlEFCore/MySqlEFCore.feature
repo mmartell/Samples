@@ -12,7 +12,6 @@ Feature: MySqlEFCore Connector
         And you run: st add-service mysql myMySqlService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app mysqlefcore-connector is started
         When you get https://mysqlefcore-connector.x.y.z/Home/MySqlData
         Then you should see "1: Test Data 1 - EF Core TestContext A"
         And you should see "2: Test Data 2 - EF Core TestContext B"
@@ -25,7 +24,6 @@ Feature: MySqlEFCore Connector
         And you run: st add-service mysql myMySqlService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app mysqlefcore-connector is started
         When you get https://mysqlefcore-connector.x.y.z/Home/MySqlData
         Then you should see "1: Test Data 1 - EF Core TestContext A"
         And you should see "2: Test Data 2 - EF Core TestContext B"
@@ -38,7 +36,6 @@ Feature: MySqlEFCore Connector
         And you run: st add-service mysql myMySqlService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app mysqlefcore-connector is started
         When you get https://mysqlefcore-connector.x.y.z/Home/MySqlData
         Then you should see "1: Test Data 1 - EF Core TestContext A"
         And you should see "2: Test Data 2 - EF Core TestContext B"
@@ -51,7 +48,6 @@ Feature: MySqlEFCore Connector
         And you run: st add-service mysql myMySqlService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app mysqlefcore-connector is started
         When you get https://mysqlefcore-connector.x.y.z/Home/MySqlData
         Then you should see "1: Test Data 1 - EF Core TestContext A"
         And you should see "2: Test Data 2 - EF Core TestContext B"

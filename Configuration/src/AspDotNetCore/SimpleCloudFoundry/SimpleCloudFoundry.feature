@@ -12,7 +12,6 @@ Feature: Simple CloudFoundry Configuration
         And you run: st add-service config-server myConfigServer
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app foo is started
         When you get https://foo.x.y.z/Home/ConfigServerSettings
         Then you should see "spring:cloud:config:name = foo"
 
@@ -24,7 +23,6 @@ Feature: Simple CloudFoundry Configuration
         And you run: st add-service config-server myConfigServer
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app foo is started
         When you get https://foo.x.y.z/Home/ConfigServerSettings
         Then you should see "spring:cloud:config:name = foo"
 
@@ -36,7 +34,6 @@ Feature: Simple CloudFoundry Configuration
         And you run: st add-service config-server myConfigServer
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app foo is started
         When you get https://foo.x.y.z/Home/ConfigServerSettings
         Then you should see "spring:cloud:config:name = foo"
 
@@ -48,7 +45,6 @@ Feature: Simple CloudFoundry Configuration
         And you run: st add-service config-server myConfigServer
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app foo is started
         When you get https://foo.x.y.z/Home/ConfigServerSettings
         Then you should see "spring:cloud:config:name = foo"
 
@@ -60,6 +56,5 @@ Feature: Simple CloudFoundry Configuration
         And you run: st add-service config-server myConfigServer
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app foo is started
         When you get https://foo.x.y.z/Home/ConfigServerSettings
         Then you should see "spring:cloud:config:name = foo"

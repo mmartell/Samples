@@ -12,7 +12,6 @@ Feature: Cloud Foundry Samples
         And you run: st add-service mysql myMySqlService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app actuator is started
         Then you should be able to access CloudFoundry app actuator management endpoints
 
     @netcoreapp3.0
@@ -23,7 +22,6 @@ Feature: Cloud Foundry Samples
         And you run: st add-service mysql myMySqlService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app actuator is started
         Then you should be able to access CloudFoundry app actuator management endpoints
 
     @netcoreapp2.1
@@ -34,7 +32,6 @@ Feature: Cloud Foundry Samples
         And you run: st add-service mysql myMySqlService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app actuator is started
         Then you should be able to access CloudFoundry app actuator management endpoints
 
     @netcoreapp2.1
@@ -45,7 +42,6 @@ Feature: Cloud Foundry Samples
         And you run: st add-service mysql myMySqlService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app actuator is started
         Then you should be able to access CloudFoundry app actuator management endpoints
 
     @net461
@@ -56,5 +52,4 @@ Feature: Cloud Foundry Samples
         And you run: st add-service mysql myMySqlService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app actuator is started
         Then you should be able to access CloudFoundry app actuator management endpoints

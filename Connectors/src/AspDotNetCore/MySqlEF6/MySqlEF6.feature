@@ -12,7 +12,6 @@ Feature: MySqlEF6 Connector
         And you run: st add-service mysql myMySqlService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app mysqlef6-connector is started
         When you get https://mysqlef6-connector.x.y.z/Home/MySqlData
         Then you should see "Key 1 = Row1 Text"
         And you should see "Key 2 = Row2 Text"

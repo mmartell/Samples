@@ -12,7 +12,6 @@ Feature: RabbitMQ Connector
         And you run: st add-service rabbitmq myRabbitMQService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app rabbitmq-connector is started
         When you post "Message=HEY THERE" to https://rabbitmq-connector.x.y.z/RabbitMQ/Send
         And you get https://rabbitmq-connector.x.y.z/RabbitMQ/Receive
         Then you should see "Message=HEY THERE"
@@ -25,7 +24,6 @@ Feature: RabbitMQ Connector
         And you run: st add-service rabbitmq myRabbitMQService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app rabbitmq-connector is started
         When you post "Message=HEY THERE" to https://rabbitmq-connector.x.y.z/RabbitMQ/Send
         And you get https://rabbitmq-connector.x.y.z/RabbitMQ/Receive
         Then you should see "Message=HEY THERE"
@@ -38,7 +36,6 @@ Feature: RabbitMQ Connector
         And you run: st add-service rabbitmq myRabbitMQService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app rabbitmq-connector is started
         When you post "Message=HEY THERE" to https://rabbitmq-connector.x.y.z/RabbitMQ/Send
         And you get https://rabbitmq-connector.x.y.z/RabbitMQ/Receive
         Then you should see "Message=HEY THERE"
@@ -51,7 +48,6 @@ Feature: RabbitMQ Connector
         And you run: st add-service rabbitmq myRabbitMQService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app rabbitmq-connector is started
         When you post "Message=HEY THERE" to https://rabbitmq-connector.x.y.z/RabbitMQ/Send
         And you get https://rabbitmq-connector.x.y.z/RabbitMQ/Receive
         Then you should see "Message=HEY THERE"
@@ -64,7 +60,6 @@ Feature: RabbitMQ Connector
         And you run: st add-service rabbitmq myRabbitMQService
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app rabbitmq-connector is started
         When you post "Message=HEY THERE" to https://rabbitmq-connector.x.y.z/RabbitMQ/Send
         And you get https://rabbitmq-connector.x.y.z/RabbitMQ/Receive
         Then you should see "Message=HEY THERE"

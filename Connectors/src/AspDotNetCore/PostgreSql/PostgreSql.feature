@@ -13,7 +13,6 @@ Feature: PostgreSql Connector
         And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app postgres-connector is started
         When you get https://postgres-connector.x.y.z/Home/PostgresData
         Then you should see "Key 1 = Row1 Text"
         And you should see "Key 2 = Row2 Text"
@@ -27,7 +26,6 @@ Feature: PostgreSql Connector
         And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app postgres-connector is started
         When you get https://postgres-connector.x.y.z/Home/PostgresData
         Then you should see "Key 1 = Row1 Text"
         And you should see "Key 2 = Row2 Text"
@@ -41,7 +39,6 @@ Feature: PostgreSql Connector
         And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app postgres-connector is started
         When you get https://postgres-connector.x.y.z/Home/PostgresData
         Then you should see "Key 1 = Row1 Text"
         And you should see "Key 2 = Row2 Text"
@@ -55,7 +52,6 @@ Feature: PostgreSql Connector
         And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app postgres-connector is started
         When you get https://postgres-connector.x.y.z/Home/PostgresData
         Then you should see "Key 1 = Row1 Text"
         And you should see "Key 2 = Row2 Text"
@@ -69,7 +65,6 @@ Feature: PostgreSql Connector
         And you run: st args -t cloud-foundry myPostgres -- -c \{\"db_name\":\"postgresample\",\"db_username\":\"steeltoe\",\"owner_name\":\"myowner\",\"owner_email\":\"demo@steeltoe.io\"\}
         And you run: st target cloud-foundry
         And you run: st deploy
-        And you wait until CloudFoundry app postgres-connector is started
         When you get https://postgres-connector.x.y.z/Home/PostgresData
         Then you should see "Key 1 = Row1 Text"
         And you should see "Key 2 = Row2 Text"
