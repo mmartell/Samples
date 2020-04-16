@@ -1,4 +1,4 @@
-﻿using Apache.Geode.Client;
+﻿using Apache.Geode.DotNetCore;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,7 +13,7 @@ namespace GemFire.SessionState
         private readonly PoolFactory _poolFactory;
         private readonly Cache _cache;
         private ILogger<GemFireCache> _logger;
-        private static IRegion<string, string> _cacheRegion;
+        private static Region _cacheRegion;
         private string _regionName = "IDistributedCacheRegion";
         private readonly SemaphoreSlim _connectLock = new SemaphoreSlim(initialCount: 1, maxCount: 1);
 
@@ -33,7 +33,7 @@ namespace GemFire.SessionState
 
             Connect();
 
-            return Encoding.ASCII.GetBytes(_cacheRegion.Get(key));
+            return Encoding.ASCII.GetBytes(_cacheRegion.GetString(key));
         }
 
         public Task<byte[]> GetAsync(string key, CancellationToken token = default(CancellationToken))
@@ -81,10 +81,12 @@ namespace GemFire.SessionState
 
             Connect();
 
-            if (!_cacheRegion.Remove(key))
-            {
-                throw new Exception("Failed to remove from cache");
-            }
+            // Until we return error codes
+            //if (!_cacheRegion.Remove(key))
+            //{
+            //    throw new Exception("Failed to remove from cache");
+            //}
+            _cacheRegion.Remove(key);
         }
 
         public Task RemoveAsync(string key, CancellationToken token = default(CancellationToken))
@@ -120,7 +122,7 @@ namespace GemFire.SessionState
 
             // NOTE: DistributedCacheEntryOptions includes info like when this item should expire... not sure how to make use of it from here
 
-            _cacheRegion.Put(key, Convert.ToBase64String(value));
+            _cacheRegion.PutString(key, Convert.ToBase64String(value));
         }
 
         public Task SetAsync(string key, byte[] value, DistributedCacheEntryOptions options, CancellationToken token = default(CancellationToken))
@@ -145,19 +147,19 @@ namespace GemFire.SessionState
             _connectLock.Wait();
             try
             {
-                _poolFactory.Create("IDistributedCachePool");
+                //_poolFactory.Create("IDistributedCachePool");
                 // create/get region
-                var regionFactory = _cache.CreateRegionFactory(RegionShortcut.PROXY).SetPoolName("pool");
+                var regionFactory = _cache.CreateRegionFactory(RegionShortcut.Proxy);
                 try
                 {
                     _logger?.LogTrace("Create CacheRegion");
-                    _cacheRegion = regionFactory.Create<string, string>(_regionName);
+                    _cacheRegion = regionFactory.CreateRegion(_regionName);
                     _logger?.LogTrace("CacheRegion created");
                 }
                 catch (Exception e)
                 {
                     _logger?.LogInformation(e, "Create CacheRegion failed... now trying to get the region");
-                    _cacheRegion = _cache.GetRegion<string, string>(_regionName);
+                    //_cacheRegion = _cache.GetRegion<string, string>(_regionName);
                 }
             }
             finally

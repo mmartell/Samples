@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <Import Project="..\..\..\..\config\versions.props" />
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <DebugType>full</DebugType>
     <Platforms>x64</Platforms>
   </PropertyGroup>
@@ -15,20 +15,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <!--<PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.CookiePolicy" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
-    <PackageReference Include="Steeltoe.CloudFoundry.ConnectorCore" Version="2.4.3" />
-    <PackageReference Include="Steeltoe.Extensions.Logging.DynamicLogger" Version="2.4.3" />
-    <PackageReference Include="Steeltoe.Management.CloudFoundryCore" Version="2.4.3" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />-->
+    <PackageReference Include="Steeltoe.Common.Hosting" Version="3.0.0-m2" />
+    <PackageReference Include="Steeltoe.Management.CloudFoundryCore" Version="3.0.0-m2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Pivotal.GemFire">
-      <HintPath>..\..\..\Pivotal.GemFire.dll</HintPath>
+    <Reference Include="GemfireDotNet">
+      <HintPath>..\..\..\..\..\gemfire-dotnet-core\GemfireDotNet\bin\Debug\netcoreapp3.1\GemfireDotNet.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Steeltoe.ConnectorBase">
+      <HintPath>..\..\..\..\..\steeltoe\src\Connectors\src\ConnectorCore\bin\Debug\netcoreapp3.0\Steeltoe.ConnectorBase.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Steeltoe.ConnectorCore">
+      <HintPath>..\..\..\..\..\steeltoe\src\Connectors\src\ConnectorCore\bin\Debug\netcoreapp3.0\Steeltoe.ConnectorCore.dll</HintPath>
+      <Private>true</Private>
     </Reference>
   </ItemGroup>
 

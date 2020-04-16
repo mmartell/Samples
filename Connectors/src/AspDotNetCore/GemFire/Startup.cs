@@ -1,4 +1,6 @@
 ﻿using GemFire.Models;
+using GemFire.SessionState;
+using Steeltoe.Connector.GemFire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -6,8 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Steeltoe.CloudFoundry.Connector.GemFire;
+using Steeltoe.Connector;
 using Steeltoe.Management.CloudFoundry;
+using Microsoft.Extensions.Caching.Distributed;
+using Apache.Geode.DotNetCore;
 
 namespace GemFire
 {
@@ -34,8 +38,12 @@ namespace GemFire
 
             services.AddCloudFoundryActuators(Configuration);
             services.AddGemFireConnection(Configuration, typeof(BasicAuthInitialize), loggerFactory: LoggerFactory);
+            services.AddSingleton<IDistributedCache>((isp) => new GemFireCache(isp.GetRequiredService<PoolFactory>(), isp.GetRequiredService<Cache>(), isp.GetService<ILogger<GemFireCache>>()));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +66,7 @@ namespace GemFire
 
             app.UseCloudFoundryActuators();
 
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

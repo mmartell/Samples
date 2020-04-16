@@ -1,4 +1,6 @@
-﻿using Apache.Geode.Client;
+﻿using Apache.Geode.DotNetCore;
+using System;
+using System.Collections.Generic;
 
 namespace GemFire.Models
 {
@@ -17,13 +19,12 @@ namespace GemFire.Models
         {
         }
 
-        public Properties<string, object> GetCredentials(Properties<string, string> props, string server)
+        public Dictionary<string, string> GetCredentials()
         {
-            var credentials = new Properties<string, object>();
-
-            credentials.Insert("security-username", _username);
-            credentials.Insert("security-password", _password);
-
+            Console.WriteLine("SimpleAuthInitialize::GetCredentials called");
+            var credentials = new Dictionary<string, string>();
+            credentials.Add("security-username", "root");
+            credentials.Add("security-password", "root-password");
             return credentials;
         }
     }
